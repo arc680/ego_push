@@ -34,7 +34,8 @@ Plugin.create :ego_push do
             str2 = message.to_s
 
             if str2 != "[]" and message[0][:user] != "mikutter_bot" and message[0][:source] != "activity"
-                str = "#{message[0].to_s} #{message[0][:user]}: https://twitter.com/#{message[0][:user]}/status/#{message[0][:id]}"
+                # message[0][:message]が正しい？
+                str = "#{message[0][:message]} from #{message[0][:user]}: https://twitter.com/#{message[0][:user]}/status/#{message[0][:id]}"
                 activity :arc680_test, str
                 timeline(:ego_push) << message
                 Net::HTTP.start('im.kayac.com', 80) do |http|
