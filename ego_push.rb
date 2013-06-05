@@ -5,6 +5,7 @@ Plugin.create :ego_push do
 
     defactivity "arc680_test", "てすと"
 
+    EGO_KEYWORD = UserConfig[:ego_word]
     IM_USERNAME = UserConfig[:imkayac_id]
     IM_PASSWORD = UserConfig[:imkayac_pass]
 
@@ -22,7 +23,7 @@ Plugin.create :ego_push do
         onupdate do |service, messages|
             #timeline(:gossip_detector) << messages.select do |m|
             message =  messages.select do |m|
-                if m.to_s =~ /あーく/
+                if m.to_s =~ /#{EGO_KEYWORD}/
                     #gossip_users[m.user] = Time.now + EXPIRE
                     true
                     #else
